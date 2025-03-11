@@ -1,0 +1,612 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""Данные для создания нового события"""
+input CreateEventDto {
+  """Дата события в формате YYYY-MM-DD (обязательное поле)"""
+  date: String!
+
+  """Место проведения события"""
+  location: String
+
+  """Название события (обязательное поле)"""
+  name: String!
+}
+
+"""Данные для создания нового боя"""
+input CreateFightDto {
+  """ID события (обязательное поле)"""
+  eventId: Int!
+
+  """Дата боя в формате YYYY-MM-DD"""
+  fightDate: String
+
+  """ID первого бойца (обязательное поле)"""
+  fighter1Id: Int!
+
+  """ID второго бойца (обязательное поле)"""
+  fighter2Id: Int!
+
+  """Метод победы (например, KO, SUB, DEC)"""
+  method: String
+
+  """Раунд окончания боя"""
+  round: Int
+
+  """Время окончания боя в формате MM:SS"""
+  time: String
+
+  """ID победителя"""
+  winnerId: Int
+}
+
+"""Данные для создания нового бойца"""
+input CreateFighterDto {
+  """Команда или аффилиация бойца"""
+  affiliation: String
+
+  """Место рождения бойца"""
+  born: String
+
+  """Дата рождения в формате YYYY-MM-DD"""
+  dateOfBirth: String
+
+  """Место базирования бойца"""
+  fightingOutOf: String
+
+  """Имя бойца (обязательное поле)"""
+  firstName: String!
+
+  """Рост бойца в сантиметрах"""
+  height: Float
+
+  """Фамилия бойца (обязательное поле)"""
+  lastName: String!
+
+  """Последний взвешенный вес в килограммах"""
+  lastWeighIn: Float
+
+  """Прозвище бойца"""
+  nickname: String
+
+  """Размах рук в сантиметрах"""
+  reach: Float
+
+  """ID весовой категории"""
+  weightClassId: Float
+}
+
+"""Данные для создания нового рейтинга"""
+input CreateRankingDto {
+  """ID бойца (обязательное поле)"""
+  fighterId: Int!
+
+  """Позиция в рейтинге (обязательное поле)"""
+  rank: Int!
+
+  """ID весовой категории (обязательное поле)"""
+  weightClassId: Int!
+}
+
+"""Данные для создания новой весовой категории"""
+input CreateWeightClassDto {
+  """Максимальный вес в килограммах (обязательное поле)"""
+  maxWeight: Float!
+
+  """Минимальный вес в килограммах (обязательное поле)"""
+  minWeight: Float!
+
+  """Название весовой категории (обязательное поле)"""
+  name: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+"""Модель события для GraphQL"""
+type Event {
+  """Дата создания записи"""
+  createdAt: DateTime!
+
+  """Дата события в формате YYYY-MM-DD"""
+  date: String!
+
+  """Уникальный идентификатор события"""
+  id: Int!
+
+  """Место проведения события"""
+  location: String
+
+  """Название события"""
+  name: String!
+
+  """Дата последнего обновления записи"""
+  updatedAt: DateTime!
+}
+
+"""Модель боя для GraphQL"""
+type Fight {
+  """Дата создания записи"""
+  createdAt: DateTime!
+
+  """ID события"""
+  eventId: Int!
+
+  """Дата боя в формате YYYY-MM-DD"""
+  fightDate: String
+
+  """ID первого бойца"""
+  fighter1Id: Int!
+
+  """ID второго бойца"""
+  fighter2Id: Int!
+
+  """Уникальный идентификатор боя"""
+  id: Int!
+
+  """Метод победы (например, KO, SUB, DEC)"""
+  method: String
+
+  """Раунд окончания боя"""
+  round: Int
+
+  """Время окончания боя в формате MM:SS"""
+  time: String
+
+  """Дата последнего обновления записи"""
+  updatedAt: DateTime!
+
+  """ID победителя"""
+  winnerId: Int
+}
+
+"""Модель бойца для GraphQL"""
+type Fighter {
+  """Команда или аффилиация бойца"""
+  affiliation: String
+
+  """Место рождения бойца"""
+  born: String
+
+  """Карьерные заработки в USD"""
+  careerEarnings: Float
+
+  """Дата создания записи"""
+  createdAt: DateTime!
+
+  """Текущая серия (количество боев)"""
+  currentStreak: Int!
+
+  """Тип текущей серии: W (победа), L (поражение), D (ничья)"""
+  currentStreakType: String
+
+  """Дата рождения в формате YYYY-MM-DD"""
+  dateOfBirth: String
+
+  """Количество ничьих"""
+  draws: Int!
+
+  """Место базирования бойца"""
+  fightingOutOf: String
+
+  """Имя бойца"""
+  firstName: String!
+
+  """Рост бойца в сантиметрах"""
+  height: Float
+
+  """Уникальный идентификатор бойца"""
+  id: Int!
+
+  """Количество нокаутов"""
+  knockouts: Int!
+
+  """Дата последнего боя в формате YYYY-MM-DD"""
+  lastFightDate: String
+
+  """Фамилия бойца"""
+  lastName: String!
+
+  """Последний взвешенный вес в килограммах"""
+  lastWeighIn: Float
+
+  """Количество поражений"""
+  losses: Int!
+
+  """Прозвище бойца"""
+  nickname: String
+
+  """Размах рук в сантиметрах"""
+  reach: Float
+
+  """Количество сабмишенов"""
+  submissions: Int!
+
+  """Дата последнего обновления записи"""
+  updatedAt: DateTime!
+
+  """ID весовой категории"""
+  weightClassId: Int
+
+  """Количество побед"""
+  wins: Int!
+}
+
+"""Статистика бойца"""
+type FighterStats {
+  """Карьерные заработки в USD"""
+  careerEarnings: Float
+
+  """Текущая серия (количество боев)"""
+  currentStreak: Int!
+
+  """Тип текущей серии: W (победа), L (поражение), D (ничья)"""
+  currentStreakType: String
+
+  """Количество ничьих"""
+  draws: Int!
+
+  """Количество нокаутов"""
+  knockouts: Int!
+
+  """Дата последнего боя в формате YYYY-MM-DD"""
+  lastFightDate: String
+
+  """Количество поражений"""
+  losses: Int!
+
+  """Количество сабмишенов"""
+  submissions: Int!
+
+  """Количество побед"""
+  wins: Int!
+}
+
+type Mutation {
+  """Создать новое событие"""
+  createEvent(
+    """Данные нового события"""
+    data: CreateEventDto!
+  ): Event!
+
+  """Создать новый бой"""
+  createFight(
+    """Данные нового боя"""
+    data: CreateFightDto!
+  ): Fight!
+
+  """Создать нового бойца"""
+  createFighter(
+    """Данные нового бойца"""
+    data: CreateFighterDto!
+  ): Fighter!
+
+  """Создать новый рейтинг"""
+  createRanking(
+    """Данные нового рейтинга"""
+    data: CreateRankingDto!
+  ): Ranking!
+
+  """Создать новую весовую категорию"""
+  createWeightClass(
+    """Данные новой весовой категории"""
+    data: CreateWeightClassDto!
+  ): WeightClass!
+
+  """Удалить событие"""
+  deleteEvent(
+    """ID события"""
+    id: Int!
+  ): Event!
+
+  """Удалить бой"""
+  deleteFight(
+    """ID боя"""
+    id: Int!
+  ): Fight!
+
+  """Удалить бойца"""
+  deleteFighter(
+    """ID бойца"""
+    id: Int!
+  ): Fighter!
+
+  """Удалить рейтинг"""
+  deleteRanking(
+    """ID рейтинга"""
+    id: Int!
+  ): Ranking!
+
+  """Удалить весовую категорию"""
+  deleteWeightClass(
+    """ID весовой категории"""
+    id: Int!
+  ): WeightClass!
+
+  """Обновить данные события"""
+  updateEvent(
+    """Обновленные данные события"""
+    data: UpdateEventDto!
+
+    """ID события"""
+    id: Int!
+  ): Event!
+
+  """Обновить данные боя"""
+  updateFight(
+    """Обновленные данные боя"""
+    data: UpdateFightDto!
+
+    """ID боя"""
+    id: Int!
+  ): Fight!
+
+  """Обновить данные бойца"""
+  updateFighter(
+    """Обновленные данные бойца"""
+    data: UpdateFighterDto!
+
+    """ID бойца"""
+    id: Int!
+  ): Fighter!
+
+  """Обновить данные рейтинга"""
+  updateRanking(
+    """Обновленные данные рейтинга"""
+    data: UpdateRankingDto!
+
+    """ID рейтинга"""
+    id: Int!
+  ): Ranking!
+
+  """Обновляет рейтинги бойцов после завершения боя"""
+  updateRankingsAfterFight(
+    """ID боя, после которого обновляются рейтинги"""
+    fightId: Int!
+  ): Boolean!
+
+  """Обновить данные весовой категории"""
+  updateWeightClass(
+    """Обновленные данные весовой категории"""
+    data: UpdateWeightClassDto!
+
+    """ID весовой категории"""
+    id: Int!
+  ): WeightClass!
+}
+
+type Query {
+  """Получить событие по ID"""
+  event(
+    """ID события"""
+    id: Int!
+  ): Event!
+
+  """Получить список всех событий"""
+  events: [Event!]!
+
+  """Получить бой по ID"""
+  fight(
+    """ID боя"""
+    id: Int!
+  ): Fight!
+
+  """Получить бойца по ID"""
+  fighter(
+    """ID бойца"""
+    id: Int!
+  ): Fighter!
+
+  """Получить статистику бойца по ID"""
+  fighterStats(
+    """ID бойца"""
+    id: Int!
+  ): FighterStats!
+
+  """Получить список всех бойцов"""
+  fighters: [Fighter!]!
+
+  """Получить список всех боев"""
+  fights: [Fight!]!
+
+  """Получить рейтинг по ID"""
+  ranking(
+    """ID рейтинга"""
+    id: Int!
+  ): Ranking!
+
+  """Получить список всех рейтингов"""
+  rankings: [Ranking!]!
+
+  """Получить список рейтингов в заданной весовой категории"""
+  rankingsByWeightClass(
+    """ID весовой категории"""
+    weightClassId: Int!
+  ): [Ranking!]!
+
+  """Получить весовую категорию по ID"""
+  weightClass(
+    """ID весовой категории"""
+    id: Int!
+  ): WeightClass!
+
+  """Получить список всех весовых категорий"""
+  weightClasses: [WeightClass!]!
+}
+
+"""Модель рейтинга для GraphQL"""
+type Ranking {
+  """Дата создания записи"""
+  createdAt: DateTime!
+
+  """Объект бойца"""
+  fighter: Fighter!
+
+  """ID бойца"""
+  fighterId: Int!
+
+  """Уникальный идентификатор рейтинга"""
+  id: Int!
+
+  """Позиция в рейтинге"""
+  rank: Int!
+
+  """Дата последнего обновления записи"""
+  updatedAt: DateTime!
+
+  """Объект весовой категории"""
+  weightClass: WeightClass!
+
+  """ID весовой категории"""
+  weightClassId: Int!
+}
+
+"""Данные для обновления события (все поля необязательные)"""
+input UpdateEventDto {
+  """Дата события в формате YYYY-MM-DD (обязательное поле)"""
+  date: String
+
+  """Место проведения события"""
+  location: String
+
+  """Название события (обязательное поле)"""
+  name: String
+}
+
+"""Данные для обновления боя (все поля необязательные)"""
+input UpdateFightDto {
+  """ID события (обязательное поле)"""
+  eventId: Int
+
+  """Дата боя в формате YYYY-MM-DD"""
+  fightDate: String
+
+  """ID первого бойца (обязательное поле)"""
+  fighter1Id: Int
+
+  """ID второго бойца (обязательное поле)"""
+  fighter2Id: Int
+
+  """Метод победы (например, KO, SUB, DEC)"""
+  method: String
+
+  """Раунд окончания боя"""
+  round: Int
+
+  """Время окончания боя в формате MM:SS"""
+  time: String
+
+  """ID победителя"""
+  winnerId: Int
+}
+
+"""Данные для обновления бойца (все поля необязательные)"""
+input UpdateFighterDto {
+  """Команда или аффилиация бойца"""
+  affiliation: String
+
+  """Место рождения бойца"""
+  born: String
+
+  """Заработок за карьеру"""
+  careerEarnings: Int
+
+  """Текущая серия"""
+  currentStreak: Int
+
+  """Тип текущей серии (например, "W" или "L")"""
+  currentStreakType: String
+
+  """Дата рождения в формате YYYY-MM-DD"""
+  dateOfBirth: String
+
+  """Количество ничьих"""
+  draws: Int
+
+  """Место базирования бойца"""
+  fightingOutOf: String
+
+  """Имя бойца (обязательное поле)"""
+  firstName: String
+
+  """Рост бойца в сантиметрах"""
+  height: Float
+
+  """Количество нокаутов"""
+  knockouts: Int
+
+  """Дата последнего боя"""
+  lastFightDate: String
+
+  """Фамилия бойца (обязательное поле)"""
+  lastName: String
+
+  """Последний взвешенный вес в килограммах"""
+  lastWeighIn: Float
+
+  """Количество поражений"""
+  losses: Int
+
+  """Прозвище бойца"""
+  nickname: String
+
+  """Размах рук в сантиметрах"""
+  reach: Float
+
+  """Количество сдач"""
+  submissions: Int
+
+  """ID весовой категории"""
+  weightClassId: Float
+
+  """Количество побед"""
+  wins: Int
+}
+
+"""Данные для обновления рейтинга (все поля необязательные)"""
+input UpdateRankingDto {
+  """ID бойца (обязательное поле)"""
+  fighterId: Int
+
+  """Позиция в рейтинге (обязательное поле)"""
+  rank: Int
+
+  """ID весовой категории (обязательное поле)"""
+  weightClassId: Int
+}
+
+"""Данные для обновления весовой категории (все поля необязательные)"""
+input UpdateWeightClassDto {
+  """Максимальный вес в килограммах (обязательное поле)"""
+  maxWeight: Float
+
+  """Минимальный вес в килограммах (обязательное поле)"""
+  minWeight: Float
+
+  """Название весовой категории (обязательное поле)"""
+  name: String
+}
+
+"""Модель весовой категории для GraphQL"""
+type WeightClass {
+  """Дата создания записи"""
+  createdAt: DateTime!
+
+  """Уникальный идентификатор весовой категории"""
+  id: Int!
+
+  """Максимальный вес в килограммах"""
+  maxWeight: Float!
+
+  """Минимальный вес в килограммах"""
+  minWeight: Float!
+
+  """Название весовой категории"""
+  name: String!
+
+  """Дата последнего обновления записи"""
+  updatedAt: DateTime!
+}
