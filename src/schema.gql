@@ -427,6 +427,9 @@ type Query {
     weightClassId: Int!
   ): [Ranking!]!
 
+  """Получить список предстоящих событий"""
+  upcomingEvents: [Event!]!
+
   """Получить весовую категорию по ID"""
   weightClass(
     """ID весовой категории"""

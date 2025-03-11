@@ -2,8 +2,8 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, MoreThanOrEqual } from 'typeorm';
 import { Event } from '../entities/event.entity';
-import { CreateEventDto } from '../dto/event/create-event.dto'; // Adjust path
-import { UpdateEventDto } from '../dto/event/update-event.dto'; // Adjust path
+import { CreateEventDto } from 'src/dto/event/create-event.dto';
+import { UpdateEventDto } from 'src/dto/event/update-event.dto';
 
 @Injectable()
 export class EventService {

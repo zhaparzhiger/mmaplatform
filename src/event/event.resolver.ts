@@ -35,4 +35,9 @@ export class EventResolver {
   async deleteEvent(@Args('id', { type: () => Int, description: 'ID события' }) id: number) {
     return this.eventService.delete(id);
   }
+
+  @Query(() => [Event], { name: 'upcomingEvents', description: 'Получить список предстоящих событий' })
+async getUpcomingEvents() {
+  return this.eventService.findUpcomingEvents();
+}
 }
